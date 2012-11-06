@@ -11,7 +11,9 @@
   </tr>
  
   <% @posts.each do |post| %>
-    <tr <% link_to post %> >
+    <tr onmouseover="this.style.cursor='pointer';"
+onclick="location.href='<%= url_for post %>';"
+style="cursor: pointer;">
       <td><%= post.name %></td>
       <td><%= post.title %></td>
       <td><%= post.content %></td>

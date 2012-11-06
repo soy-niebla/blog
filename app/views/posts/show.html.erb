@@ -1,9 +1,28 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span3">
-      <!--Sidebar content-->
+    <div class="span4">
+      <table class="table table-hover">
+		  <tr>
+		    <th>Name</th>
+		    <th>Title</th>
+		    <th>Content</th>
+		    <th></th>
+		    <th></th>
+		    <th></th>
+		  </tr>
+		 
+		  <% @posts.each do |post| %>
+		    <tr onmouseover="this.style.cursor='pointer';"
+				onclick="location.href='<%= url_for post %>';"
+				style="cursor: pointer;">
+		      <td><%= post.name %></td>
+		      <td><%= post.title %></td>
+		      <td><%= post.content[0..20] %></td>
+		    </tr>
+		  <% end %>
+		</table>
     </div>
-    <div class="span8">
+    <div class="verticalLine span8">
 		<p>
 		  <b>Name:</b>
 		  <%= @post.name %>
@@ -27,13 +46,8 @@
 		<h2>Comments</h2>
 		<%= render @post.comments %>
 		
-
-		<div class="row">
-			<div class="span6 offset3">
-				<h3>Add a comment:</h3></br>
-				<%= render "comments/form" %>
-			</div>
-		</div>
+		<h3>Add a comment:</h3></br>
+		<%= render "comments/form" %>
     </div>
   </div>
 </div>
